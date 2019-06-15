@@ -22,7 +22,7 @@ var words = 3;
 var currX = 0;
 var currY = 0;
 var score = 0;
-var timer = 6500;
+var timer = 5500;
 var lose = false;
 var menu = true;
 var current = 0;
@@ -74,8 +74,8 @@ function render() {
 
 		context.fillStyle = "rgba(0, 0, 0, 1)";
 		context.fillRect(canvas.width*0.65, canvas.height/11, canvas.width/10, canvas.height/40);
-		context.fillStyle = "rgba(" + (255 - 255*(timer/6500)) + ", " + 255*(timer/6500) + ", 0, 1)";
-		context.fillRect((canvas.width*0.65 + 2) + ((canvas.width/10 - 4)/2)*(1 - (timer/6500)), canvas.height/11 + 2, (canvas.width/10 - 4) - (canvas.width/10 - 4)*(1 - (timer/6500)), canvas.height/40 - 4);
+		context.fillStyle = "rgba(" + (255 - 255*(timer/5500)) + ", " + 255*(timer/5500) + ", 0, 1)";
+		context.fillRect((canvas.width*0.65 + 2) + ((canvas.width/10 - 4)/2)*(1 - (timer/5500)), canvas.height/11 + 2, (canvas.width/10 - 4) - (canvas.width/10 - 4)*(1 - (timer/5500)), canvas.height/40 - 4);
 
 		context.strokeStyle = "rgba(0, 0, 0, 1)";
 		context.lineWidth = "5";
@@ -116,7 +116,7 @@ setInterval(function() {
 		if(input.replace(/[^a-zA-Z ]/g, "").replace(" ", "").toLowerCase() == copypasta[current][words].replace(/[^a-zA-Z ]/g, "").replace(" ", "").toLowerCase()) {
 			input = "";
 			score += copypasta[current][words].replace(/[^a-zA-Z ]/g, "").replace(" ", "").length;
-			timer = 6500;
+			timer = 5500;
 			words += 1;
 		}
 
@@ -135,7 +135,7 @@ document.addEventListener('mouseup', function(event) {
 	if(!menu && mouseX >= canvas.width/2 - canvas.width/10 && mouseX <= canvas.width/2 + canvas.width/10 && mouseY >= canvas.height*0.8 && mouseY <= canvas.height*0.9) {
 		menu = true;
 		lose = false;
-		timer = 6500;
+		timer = 5500;
 	} else if(menu) {
 		for(var i in copypasta) {
 			context.rect(canvas.width/2 - canvas.width/8, canvas.height*0.08 + canvas.height*0.08*i, canvas.width/4, canvas.height*0.07);
@@ -147,7 +147,7 @@ document.addEventListener('mouseup', function(event) {
 				words = 3;
 				score = 0;
 				input = "";
-				timer = 6500;
+				timer = 5500;
 			}
 		}
 	}
