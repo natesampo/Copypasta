@@ -25,6 +25,7 @@ var score = 0;
 var timer = 5500;
 var lose = false;
 var menu = true;
+var win = false;
 var current = 0;
 var copypasta = [navySeals.split(" "), rickMorty.split(" "), chickenNuggets.split(" "), rawr.split(" "), hitOrMiss.split(" "), mesothelioma.split(" "), darthPlaguies.split(" "), beeMovie.split(" "), allStar.split(" "), pussy.split(" "), never.split(" ")];
 var names = ["Navy Seals", "Rick and Morty", "Chicken Nuggets", "rawr x3 *nuzzles*", "Hit or Miss", "Mesothelioma", "Darth Plagueis", "Bee Movie Intro", "All Star", "Pussy Pussy Pussy Marijuana", "Never Gonna Give You Up"];
@@ -95,6 +96,15 @@ function render() {
 			context.fillText("The word was: " + copypasta[current][words], canvas.width/2, canvas.height*0.4 + canvas.width/30);
 			context.font = (canvas.width/60).toString() + 'px Arial';
 			context.fillText("Score: " + score, canvas.width/2, canvas.height*0.4 + canvas.width/15);
+		} else if(win) {
+			context.fillStyle = "rgba(0, 0, 0, 1)";
+			context.textAlign = "center";
+			context.font = "bold " + (canvas.width/60).toString() + 'px Arial';
+			context.fillText("Return to Menu", canvas.width/2, canvas.height*0.85);
+			context.font = "bold " + (canvas.width/30).toString() + 'px Arial';
+			context.fillText("YOU WIN", canvas.width/2, canvas.height*0.4);
+			context.font = (canvas.width/60).toString() + 'px Arial';
+			context.fillText("Score: " + score, canvas.width/2, canvas.height*0.4 + canvas.width/30);
 		} else {
 			context.fillStyle = "rgba(0, 0, 0, 1)";
 			context.textAlign = "center";
@@ -118,6 +128,10 @@ setInterval(function() {
 			score += copypasta[current][words].replace(/[^a-zA-Z ]/g, "").replace(" ", "").length;
 			timer = 5500;
 			words += 1;
+
+			if(words == copypasta[current].length) {
+				win = true;
+			}
 		}
 
 		timer -= 1000/ticks;
@@ -148,6 +162,7 @@ document.addEventListener('mouseup', function(event) {
 				score = 0;
 				input = "";
 				timer = 5500;
+				win = false;
 			}
 		}
 	}
