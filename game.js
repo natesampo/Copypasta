@@ -134,6 +134,7 @@ document.addEventListener('mouseup', function(event) {
 	if(!menu && mouseX >= canvas.width/2 - canvas.width/10 && mouseX <= canvas.width/2 + canvas.width/10 && mouseY >= canvas.height*0.8 && mouseY <= canvas.height*0.9) {
 		menu = true;
 		lose = false;
+		timer = 10000;
 	} else if(menu) {
 		for(var i in copypasta) {
 			context.rect(canvas.width/2 - canvas.width/8, canvas.height*0.08 + canvas.height*0.08*i, canvas.width/4, canvas.height*0.07);
@@ -145,6 +146,7 @@ document.addEventListener('mouseup', function(event) {
 				words = 3;
 				score = 0;
 				input = "";
+				timer = 10000;
 			}
 		}
 	}
